@@ -1,0 +1,4 @@
+Given a string s and a pattern t, we would like to know if pattern t lies in string s
+
+KMP is to first solve the subproblem which is for some stirng s, for each position i, what is the maximum substring starting at i that is a prefix of s
+    once we have this, we just solve this problem on s' = t+s, and check positions larger than |t|

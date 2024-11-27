@@ -1,0 +1,237 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+/* Macros {{{ */
+/* Basics {{{ */
+using ll    = long long;
+using ull   = unsigned long long;
+using ld    = long double;
+using str   = string;
+
+using pi    = pair<int,int>;
+using pll   = pair<ll, ll>;
+using pld   = pair<ld, ld>;
+
+using vi    = vector<int>;
+using vll   = vector<ll>;
+using vld   = vector<ld>;
+
+using vpi   = vector<pi>;
+using vpll  = vector<pll>;
+using vpld  = vector<pld>;
+
+using vvi   = vector<vi>;
+using vvll  = vector<vll>;
+using vvld  = vector<vld>;
+
+using vvpi  = vector<vpi>;
+using vvpll = vector<vpll>;
+using vvpld = vector<vpld>;
+
+#define arr     array
+#define ve      vector
+#define pb      push_back
+#define rsz(a)  resize(a)
+#define mp      make_pair
+#define fi      first
+#define se      second
+#define all(x)  x.begin(),x.end()
+#define rall(x) x.rbegin(),x.rend()
+#define sz      size()
+
+#define For(i, a, b)    for(int i=a; i<b; ++i)
+#define Rof(i, a, b)    for(int i = (b)-1; i >= (a); --i)
+#define rep(a)          For(_, 0, a)
+#define each(a, x)      for(auto &a : x)
+#define reach(a, x)     for(auto a = x.rbegin(); a != x.rend(); ++a)
+
+template<typename T, typename U> inline void cmin(T &x, U y) { if(y < x) x = y; }
+template<typename T, typename U> inline void cmax(T &x, U y) { if(x < y) x = y; }
+/*}}}*/
+
+/* IO {{{ */
+// Read
+#define _re_(a)     cin >> a;
+#define re(...)     { FOR_EACH(_re_, __VA_ARGS__) }
+
+#define rewv(a, x)  { _re_(a); x.rsz(a); each(b, x) _re_(b); }
+
+#define _rdi_(a)    int a; _re_(a)
+#define rdi(...)    FOR_EACH(_rdi_, __VA_ARGS__)
+
+#define _rdll_(a)   ll a; _re_(a)
+#define rdll(...)   FOR_EACH(_rdll_, __VA_ARGS__)
+
+#define _pr_(a)     cout << a << ' ';
+#define pr(...)     { FOR_EACH(_pr_, __VA_ARGS__) }
+
+#define _ln_(...)       cout << '\n';
+#define ln()            cout << '\n';
+#define _pln_aux_(a)    cout << a << '\n';
+#define _pln_(...)      FOR_EACH(_pln_aux_, __VA_ARGS__)
+/* #define _pln_fork_(...) TENTH_PARAM(__VA_ARGS__,_pln_,_pln_,_pln_,_pln_,_pln_,_pln_,_pln_,_pln_,_ln_)(__VA_ARGS__) */
+#define pln(...)        { _pln_(__VA_ARGS__) }
+
+/* IO - Helpers {{{*/
+#define TENTH_PARAM(_0,_1,_2,_3,_4,_5,_6,_7,_8,NAME,...) NAME
+
+#define PARENS ()
+#define EXPAND(arg)     EXPAND1(EXPAND1(EXPAND1(EXPAND1(arg))))
+#define EXPAND1(arg)    EXPAND2(EXPAND2(EXPAND2(EXPAND2(arg))))
+#define EXPAND2(arg)    EXPAND3(EXPAND3(EXPAND3(EXPAND3(arg))))
+#define EXPAND3(arg)    EXPAND4(EXPAND4(EXPAND4(EXPAND4(arg))))
+#define EXPAND4(arg)    arg
+
+#define FOR_EACH(macro, ...)                                    \
+  __VA_OPT__(EXPAND(FOR_EACH_HELPER(macro, __VA_ARGS__)))
+#define FOR_EACH_HELPER(macro, a1, ...)                         \
+  macro(a1)                                                     \
+  __VA_OPT__(FOR_EACH_AGAIN PARENS (macro, __VA_ARGS__))
+#define FOR_EACH_AGAIN() FOR_EACH_HELPER
+/*}}}*//*}}}*//*}}}*/
+
+int n;
+void solve() {
+    re(n);
+    cout.flush();
+    int res;
+
+    if (n == 2) {
+        pr('!', 1, 2);
+        ln();
+        cout.flush();
+        re(res);
+        if (res < 0) exit(1);
+        return;
+    }
+
+    // let a be some number
+    //  if gcd(a, b) = b and 2*b > n-1, then a must be 0
+    //  for any other individual case, it is easy to raise a doubt
+    //      consider a = 2*b
+    //
+    // gcd(p[i], p[j]) = k
+    //
+    // gcd(p[i], p[k]) =
+    //
+    // for any collection of primes q1, q2, ...
+    //  none of them divide (q1*q2*...) - 1
+    //  that is, there must be another prime in the set [2, (q1*q2*...) - 1]
+    //  so there must be a number less than it that it is relatively prime to
+    //
+    // with this in mind, for any i other than 0, there exists a j such that gcd(p[i], p[j]) = 1
+    // starting with i=0, j=1, walk j forwards until gcd(p[i], p[j]) = 1
+    //  let q[k] denote the result of the kth query
+    //
+    //  we get the following information
+    //      p[i] has divisors { q[1], q[2], q[3], ... }
+    //      p[k] has divisor q[k]
+    //      p[i] is relatively prime to p[j]
+
+    // query (1, i) for all 1 < i <= n
+    //  If there is some result that is not 1, we know that p[1] > 1
+    //      there will be n/p[1] results with the max value
+    //      repeat over these results
+    //      we continue this until we are left with 2 results, 0 and the max power of p[1]
+    //  the max queries doen this way is
+    //      (n - 1) + (n/2 - 1) + (n/4 - 1) + (n/8 - 1) + ... (1-1)
+    //      = (2n-1)-log(n)
+    // largest when n is a power of 2
+    //
+    // If all results are 1, then we know that p[1] = 1
+    //  then we proceed as follows:
+    //      starting with i=2, j=3
+    //      while (i, j) == 1 -- neither i or j is 0
+    //          increment j
+    //      set i to be j and repeat
+
+
+    vpi gcds;
+    int Mgcd=1;
+    For(i, 2, n+1) {
+        pr('?', 1, i);
+        ln();
+        cout.flush();
+        rdi(gcd);
+        cmax(Mgcd, gcd);
+        gcds.pb({gcd, i});
+    }
+
+    if (Mgcd == 1) {
+        int i=2, j=2;
+        while(i < n) {
+            int gcd;
+            do {
+                ++j;
+                pr('?', i, j);
+                ln();
+                cout.flush();
+                re(gcd);
+            } while(j < n && gcd == 1);
+
+            if (j == n) {
+                pr('!', i, j);
+                ln();
+                cout.flush();
+                re(res);
+                if (res < 0) exit(1);
+                return;
+            }
+
+            i = j;
+        }
+    } else {
+        int i=1;
+        while(gcds.sz) {
+            vi indices;
+            for(auto [ gcd, ind ] : gcds)
+                if (gcd == Mgcd) indices.pb(ind);
+            gcds.clear();
+
+            if (indices.sz == 1) {
+                pr('!', i, indices[0]);
+                ln();
+                cout.flush();
+                re(res);
+                if (res < 0) exit(1);
+                return;
+            } else if (indices.sz == 2) {
+                pr('!', indices[0], indices[1]);
+                ln();
+                cout.flush();
+                re(res);
+                if (res < 0) exit(1);
+                return;
+            }
+
+            i = indices[0];
+            For(j, 1, indices.sz) {
+                pr('?', i, indices[j]);
+                ln();
+                cout.flush();
+                rdi(gcd);
+                cmax(Mgcd, gcd);
+                gcds.pb({gcd, indices[j]});
+            }
+        }
+    }
+}
+
+int main() {
+    /* cout << fixed << setprecision(6); */
+    int t=1;
+    cin >> t;
+    for (int i=0;i<t;i++)
+        solve();
+
+    return 0;
+    // you should actually read the stuff at the bottom
+}
+
+/* stuff you should look for
+ * int overflow, array bounds
+ * special cases (n=1?)
+ * do smth instead of nothing and stay organized
+ * WRITE STUFF DOWN
+ * DON'T GET STUCK ON ONE APPROACH
+ */

@@ -1,0 +1,155 @@
+In file included from /usr/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/stdc++.h:84,
+                 from main.cpp:1:
+/usr/include/c++/12.2.0/numeric: In instantiation of ‘_Tp std::transform_reduce(_InputIterator, _InputIterator, _Tp, _BinaryOperation, _UnaryOperation) [with _InputIterator = __gnu_cxx::__normal_iterator<char*, __cxx11::basic_string<char> >; _Tp = int; _BinaryOperation = solve()::<lambda(auto:28)>; _UnaryOperation = plus<void>]’:
+main.cpp:99:30:   required from here
+/usr/include/c++/12.2.0/numeric:446:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  446 |               _Tp __v1 = __binary_op(__unary_op(__first[0]),
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/include/c++/12.2.0/string:48,
+                 from /usr/include/c++/12.2.0/bits/locale_classes.h:40,
+                 from /usr/include/c++/12.2.0/bits/ios_base.h:41,
+                 from /usr/include/c++/12.2.0/ios:42,
+                 from /usr/include/c++/12.2.0/istream:38,
+                 from /usr/include/c++/12.2.0/sstream:38,
+                 from /usr/include/c++/12.2.0/complex:45,
+                 from /usr/include/c++/12.2.0/ccomplex:39,
+                 from /usr/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/stdc++.h:54:
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:446:48: note:   candidate expects 2 arguments, 1 provided
+  446 |               _Tp __v1 = __binary_op(__unary_op(__first[0]),
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:447:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  447 |                                      __unary_op(__first[1]));
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:447:48: note:   candidate expects 2 arguments, 1 provided
+  447 |                                      __unary_op(__first[1]));
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:448:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  448 |               _Tp __v2 = __binary_op(__unary_op(__first[2]),
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:448:48: note:   candidate expects 2 arguments, 1 provided
+  448 |               _Tp __v2 = __binary_op(__unary_op(__first[2]),
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:449:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  449 |                                      __unary_op(__first[3]));
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:449:48: note:   candidate expects 2 arguments, 1 provided
+  449 |                                      __unary_op(__first[3]));
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:450:37: error: no match for call to ‘(solve()::<lambda(auto:28)>) (int&, int&)’
+  450 |               _Tp __v3 = __binary_op(__v1, __v2);
+      |                          ~~~~~~~~~~~^~~~~~~~~~~~
+main.cpp:99:42: note: candidate: ‘template<class auto:28> solve()::<lambda(auto:28)>’
+   99 |     int nh = transform_reduce(all(s), 0, [](auto v){ return (v - '0'); }, plus{});
+      |                                          ^
+main.cpp:99:42: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:450:37: note:   candidate expects 1 argument, 2 provided
+  450 |               _Tp __v3 = __binary_op(__v1, __v2);
+      |                          ~~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:451:35: error: no match for call to ‘(solve()::<lambda(auto:28)>) (int&, int&)’
+  451 |               __init = __binary_op(__init, __v3);
+      |                        ~~~~~~~~~~~^~~~~~~~~~~~~~
+main.cpp:99:42: note: candidate: ‘template<class auto:28> solve()::<lambda(auto:28)>’
+   99 |     int nh = transform_reduce(all(s), 0, [](auto v){ return (v - '0'); }, plus{});
+      |                                          ^
+main.cpp:99:42: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:451:35: note:   candidate expects 1 argument, 2 provided
+  451 |               __init = __binary_op(__init, __v3);
+      |                        ~~~~~~~~~~~^~~~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:456:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  456 |         __init = __binary_op(__init, __unary_op(*__first));
+      |                                      ~~~~~~~~~~^~~~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:456:48: note:   candidate expects 2 arguments, 1 provided
+  456 |         __init = __binary_op(__init, __unary_op(*__first));
+      |                                      ~~~~~~~~~~^~~~~~~~~~
+/usr/include/c++/12.2.0/numeric: In instantiation of ‘_Tp std::transform_reduce(_InputIterator, _InputIterator, _Tp, _BinaryOperation, _UnaryOperation) [with _InputIterator = __gnu_cxx::__normal_iterator<char*, __cxx11::basic_string<char> >; _Tp = int; _BinaryOperation = solve()::<lambda(auto:29)>; _UnaryOperation = plus<void>]’:
+main.cpp:101:30:   required from here
+/usr/include/c++/12.2.0/numeric:446:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  446 |               _Tp __v1 = __binary_op(__unary_op(__first[0]),
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:446:48: note:   candidate expects 2 arguments, 1 provided
+  446 |               _Tp __v1 = __binary_op(__unary_op(__first[0]),
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:447:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  447 |                                      __unary_op(__first[1]));
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:447:48: note:   candidate expects 2 arguments, 1 provided
+  447 |                                      __unary_op(__first[1]));
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:448:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  448 |               _Tp __v2 = __binary_op(__unary_op(__first[2]),
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:448:48: note:   candidate expects 2 arguments, 1 provided
+  448 |               _Tp __v2 = __binary_op(__unary_op(__first[2]),
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:449:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  449 |                                      __unary_op(__first[3]));
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:449:48: note:   candidate expects 2 arguments, 1 provided
+  449 |                                      __unary_op(__first[3]));
+      |                                      ~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:450:37: error: no match for call to ‘(solve()::<lambda(auto:29)>) (int&, int&)’
+  450 |               _Tp __v3 = __binary_op(__v1, __v2);
+      |                          ~~~~~~~~~~~^~~~~~~~~~~~
+main.cpp:101:42: note: candidate: ‘template<class auto:29> solve()::<lambda(auto:29)>’
+  101 |     int sc = transform_reduce(all(s), 0, [](auto v){ return (v - '0'); }, plus{});
+      |                                          ^
+main.cpp:101:42: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:450:37: note:   candidate expects 1 argument, 2 provided
+  450 |               _Tp __v3 = __binary_op(__v1, __v2);
+      |                          ~~~~~~~~~~~^~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:451:35: error: no match for call to ‘(solve()::<lambda(auto:29)>) (int&, int&)’
+  451 |               __init = __binary_op(__init, __v3);
+      |                        ~~~~~~~~~~~^~~~~~~~~~~~~~
+main.cpp:101:42: note: candidate: ‘template<class auto:29> solve()::<lambda(auto:29)>’
+  101 |     int sc = transform_reduce(all(s), 0, [](auto v){ return (v - '0'); }, plus{});
+      |                                          ^
+main.cpp:101:42: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:451:35: note:   candidate expects 1 argument, 2 provided
+  451 |               __init = __binary_op(__init, __v3);
+      |                        ~~~~~~~~~~~^~~~~~~~~~~~~~
+/usr/include/c++/12.2.0/numeric:456:48: error: no match for call to ‘(std::plus<void>) (char&)’
+  456 |         __init = __binary_op(__init, __unary_op(*__first));
+      |                                      ~~~~~~~~~~^~~~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note: candidate: ‘template<class _Tp, class _Up> constexpr decltype ((forward<_Tp>(__t) + forward<_Up>(__u))) std::plus<void>::operator()(_Tp&&, _Up&&) const’
+  254 |         operator()(_Tp&& __t, _Up&& __u) const
+      |         ^~~~~~~~
+/usr/include/c++/12.2.0/bits/stl_function.h:254:9: note:   template argument deduction/substitution failed:
+/usr/include/c++/12.2.0/numeric:456:48: note:   candidate expects 2 arguments, 1 provided
+  456 |         __init = __binary_op(__init, __unary_op(*__first));
+      |                                      ~~~~~~~~~~^~~~~~~~~~
